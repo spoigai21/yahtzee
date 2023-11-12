@@ -1,0 +1,30 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+}
+
+// Define the JAR file name and manifest settings
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.proj.apcsa.YahtzeeMain'
+    }
+}
+
+
+// Define a task for running your application (optional)
+task run(type: JavaExec, dependsOn: 'classes') {
+    main = 'com.proj.apcsa.YahtzeeMain'
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
+
